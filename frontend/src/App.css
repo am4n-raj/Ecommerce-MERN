@@ -1,3 +1,21 @@
+/* Default */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+*{
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.3px;
+}
+.primary-btn{
+  width: 5rem;
+  background: #1893ff;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  font-weight:900;
+}
+
 /* Navbar */
 .nav-ul{
   background: #2b2b2b;
@@ -18,9 +36,6 @@
   padding: 5px;
   color: white;
 }
-.nav-ul li a:hover{
-  color: rgba(90, 90, 245, 0.489);
-}
 .nav-ul li a:focus{
   color: blue;
 }
@@ -35,3 +50,24 @@
   color: white;
 }
 
+/* SignUp form */
+.signup-form{
+  text-align: center;
+}
+.signup-field{
+  display: block;
+  margin: 20px auto;
+  padding: 7px;
+  border: 1px solid rgb(170, 170, 237);
+  border-radius: 6px;
+  width: 20%;
+  font-weight: 900;
+  transition:0.3s ease-in-out;
+}
+
+@media only screen and (max-width:768px) {
+  .signup-field{
+    width: 50%;
+  }
+  
+}
