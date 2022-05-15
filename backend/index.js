@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require("cors");
 const app = express();
 require('./db/config')
 const User = require('./db/Users')
@@ -11,7 +12,8 @@ const User = require('./db/Users')
 //   client.close();
 // });
 
-app.use(express.json)
+app.use(express.json);
+app.use(cors());
 app.post("/register", async (req,resp)=>{
     let user = new User(req.body);
     let result = await user.save();
