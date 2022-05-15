@@ -1,15 +1,7 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express();
-
-const connectDB = async ()=>{
-    mongoose.connect('mongodb+srv://admin:aman25@products.jwfjq.mongodb.net/Products?retryWrites=true&w=majority')
-    const productSchema = new mongoose.Schema({});
-    const products = mongoose.model('product', productSchema);
-    // const data = await 
-}
-
+require('./db/config')
+const User = require('./db/Users')
 
 // const uri = "mongodb+srv://admin:aman25@products.jwfjq.mongodb.net/Products?retryWrites=true&w=majority";
 // const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
@@ -18,5 +10,12 @@ const connectDB = async ()=>{
 //   // perform actions on the collection object
 //   client.close();
 // });
+
+app.use(express.json)
+app.post("/register", async (req,resp)=>{
+    let user = new User(req.body);
+    let result = await user.save();
+    resp.send(result)
+})
 
 app.listen(5000);
