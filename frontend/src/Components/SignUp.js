@@ -14,7 +14,6 @@ function SignUp() {
 
         })
         result = await result.json()
-        console.log(result)
     }
   return (
     <div className="signup-form">
