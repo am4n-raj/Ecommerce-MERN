@@ -1,5 +1,13 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
+import SendIcon from "@mui/icons-material/Send";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import InputAdornment from "@mui/material/InputAdornment";
+import Email from "@mui/icons-material/Email";
+import AccountCircle from "@mui/icons-material/AccountCircle";
+import Password from "@mui/icons-material/Password";
+import { alpha, styled } from "@mui/material/styles";
 
 function SignUp() {
   const [name, setName] = useState("");
@@ -15,34 +23,78 @@ function SignUp() {
     });
     result = await result.json();
   };
+  const ValidationTextField = styled(TextField)({
+    "& input:valid + fieldset": {
+      borderColor: "green",
+      borderWidth: 2,
+    },
+    "& input:invalid + fieldset": {
+      borderColor: "red",
+      borderWidth: 2,
+    },
+    "& input:valid:focus + fieldset": {
+      borderLeftWidth: 6,
+      padding: "4px !important", // override inline-style
+    },
+  });
   return (
     <div className="signup-form">
       <h1>Create Account</h1>
-      <input
+      <ValidationTextField
         className="signup-field"
+        id="outlined-basic"
+        label="Full Name"
         type="text"
-        placeholder="Enter Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        variant="outlined"
+        placeholder="John Doe"
+        required
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <AccountCircle />
+            </InputAdornment>
+          ),
+        }}
+        margin="normal"
+        color="warning"
       />
-
-      <input
+      <ValidationTextField
         className="signup-field"
-        type="password"
-        placeholder="Enter Password"
-        value={pwd}
-        onChange={(e) => setPwd(e.target.value)}
-      />
-
-      <input
-        className="signup-field"
+        id="outlined-basic"
+        label="Email"
         type="email"
-        placeholder="Enter Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        variant="outlined"
+        placeholder="john@xyz.com"
+        required
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <Email />
+            </InputAdornment>
+          ),
+        }}
+        margin="normal"
       />
-
-      <Button variant="contained">SignUp</Button>
+      <ValidationTextField
+        className="signup-field"
+        id="outlined-basic"
+        label="Password"
+        type="password"
+        variant="outlined"
+        required
+        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <Password />
+            </InputAdornment>
+          ),
+        }}
+        margin="normal"
+      />
+      <Button variant="contained" startIcon={<SendIcon />}>
+        SignUp
+      </Button>
     </div>
   );
 }
