@@ -4,6 +4,10 @@
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.3px;
 }
+body{
+  background-color: #2b2b2b;
+  color: white;
+}
 .primary-btn{
   width: 5rem;
   background: #1893ff;
@@ -18,7 +22,7 @@
 
 /* Navbar */
 .nav-ul{
-  background: #2b2b2b;
+  background-color: #2b2b2b;
   padding: 5px;
   margin: 0;
 }
